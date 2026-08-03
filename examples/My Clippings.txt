@@ -1,0 +1,12 @@
+架空の読書術 (山田 太郎)
+- あなたのハイライト 位置No. 10-11 | 追加日: 2024年1月3日 水曜日
+これは動作確認用に作成した架空の文章です。
+==========
+架空の読書術 (山田 太郎)
+- あなたのメモ 位置No. 12 | 追加日: 2024年1月3日 水曜日
+ここに自分の考えを記録します。
+==========
+Synthetic Reading (Ada Example)
+- Your Highlight on page 5 | Location 40-42 | Added on Thursday, February 1, 2024 9:00 AM
+This is fully synthetic example text for testing.
+==========
