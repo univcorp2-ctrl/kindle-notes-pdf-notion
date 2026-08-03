@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import re
 import time
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass
-from typing import Any, Callable, Iterable
+from typing import Any
 
 import httpx
 
