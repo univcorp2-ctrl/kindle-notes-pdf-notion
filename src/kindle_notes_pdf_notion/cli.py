@@ -7,6 +7,7 @@ from pathlib import Path
 
 import typer
 
+from .models import ParseResult
 from .notion import NotionClient
 from .parsers import parse_path
 from .pdf import generate_pdfs
@@ -21,7 +22,7 @@ app = typer.Typer(
 )
 
 
-def _load(input_path: Path):  # type: ignore[no-untyped-def]
+def _load(input_path: Path) -> ParseResult:
     try:
         return parse_path(input_path)
     except (OSError, ValueError) as exc:
