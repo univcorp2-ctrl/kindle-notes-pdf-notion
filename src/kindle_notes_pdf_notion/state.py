@@ -55,8 +55,7 @@ class SyncState:
             "version": 1,
             "sources": {
                 source_id: {
-                    page_id: sorted(fingerprints)
-                    for page_id, fingerprints in sorted(pages.items())
+                    page_id: sorted(fingerprints) for page_id, fingerprints in sorted(pages.items())
                 }
                 for source_id, pages in sorted(self.sources.items())
             },

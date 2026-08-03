@@ -4,7 +4,6 @@ from typer.testing import CliRunner
 
 from kindle_notes_pdf_notion.cli import app
 
-
 runner = CliRunner()
 
 

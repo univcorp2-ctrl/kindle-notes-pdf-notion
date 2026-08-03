@@ -81,11 +81,7 @@ def build_page_properties(
     properties_schema = schema.get("properties", {})
     result: dict[str, Any] = {title_property: {"title": _text_value(book.title)}}
     latest = next(
-        (
-            date
-            for date in reversed([_iso_date(item.added_at) for item in book.clippings])
-            if date
-        ),
+        (date for date in reversed([_iso_date(item.added_at) for item in book.clippings]) if date),
         None,
     )
     for name, definition in properties_schema.items():
@@ -103,7 +99,9 @@ def build_page_properties(
                 result[name] = {"select": {"name": source}}
             elif kind == "rich_text":
                 result[name] = {"rich_text": _text_value(source)}
-        elif normalized in {"latesthighlight", "latestdate", "最新日"} and latest and kind == "date":
+        elif (
+            normalized in {"latesthighlight", "latestdate", "最新日"} and latest and kind == "date"
+        ):
             result[name] = {"date": {"start": latest}}
     return result
 
@@ -172,7 +170,9 @@ class NotionClient:
         if self._owns_client:
             self.http.close()
 
-    def _request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
+    def _request(
+        self, method: str, path: str, payload: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
         for attempt in range(self.max_retries + 1):
             response = self.http.request(method, path, json=payload)
             transient = response.status_code == 429 or response.status_code >= 500
@@ -208,9 +208,7 @@ class NotionClient:
             return str(page_id) if page_id else None
         return None
 
-    def create_book_page(
-        self, book: Book, schema: dict[str, Any], title_property: str
-    ) -> str:
+    def create_book_page(self, book: Book, schema: dict[str, Any], title_property: str) -> str:
         response = self._request(
             "POST",
             "/v1/pages",

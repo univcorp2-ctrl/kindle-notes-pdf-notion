@@ -11,7 +11,6 @@ from kindle_notes_pdf_notion.notion import (
 )
 from kindle_notes_pdf_notion.state import SyncState
 
-
 SCHEMA = {
     "object": "data_source",
     "id": "source-id",

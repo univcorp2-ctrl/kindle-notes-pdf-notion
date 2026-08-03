@@ -151,7 +151,9 @@ def generate_pdfs(books: list[Book], output: Path, split: bool = False) -> list[
 
     generated: list[Path] = []
     for book in books:
-        target = output.with_name(f"{output.stem}-{_safe_filename(book.title)}{output.suffix or '.pdf'}")
+        target = output.with_name(
+            f"{output.stem}-{_safe_filename(book.title)}{output.suffix or '.pdf'}"
+        )
         _build_one([book], target, book.title)
         generated.append(target)
     return generated

@@ -62,7 +62,9 @@ def parse_content(content: str, suffix: str = "") -> ParseResult:
     """Parse in-memory export content."""
 
     input_format = detect_format(content, suffix)
-    parsed = parse_html_export(content) if input_format == "kindle_html" else parse_clippings(content)
+    parsed = (
+        parse_html_export(content) if input_format == "kindle_html" else parse_clippings(content)
+    )
     unique, duplicate_count = _deduplicate(parsed)
     return ParseResult(
         input_format=input_format,

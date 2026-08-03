@@ -66,7 +66,9 @@ def _sync(
 
 @app.command("inspect")
 def inspect_command(
-    input_path: Path = typer.Argument(..., exists=True, dir_okay=False, readable=True, metavar="INPUT"),
+    input_path: Path = typer.Argument(
+        ..., exists=True, dir_okay=False, readable=True, metavar="INPUT"
+    ),
 ) -> None:
     """Inspect an export without writing files or contacting Notion."""
 
@@ -79,7 +81,9 @@ def inspect_command(
 
 @app.command("pdf")
 def pdf_command(
-    input_path: Path = typer.Argument(..., exists=True, dir_okay=False, readable=True, metavar="INPUT"),
+    input_path: Path = typer.Argument(
+        ..., exists=True, dir_okay=False, readable=True, metavar="INPUT"
+    ),
     output: Path = typer.Option(Path("dist/kindle-notes.pdf"), "--output", "-o"),
     split: bool = typer.Option(False, "--split", help="Generate one PDF per book."),
 ) -> None:
@@ -96,10 +100,14 @@ def pdf_command(
 
 @app.command("notion")
 def notion_command(
-    input_path: Path = typer.Argument(..., exists=True, dir_okay=False, readable=True, metavar="INPUT"),
+    input_path: Path = typer.Argument(
+        ..., exists=True, dir_okay=False, readable=True, metavar="INPUT"
+    ),
     dry_run: bool = typer.Option(False, "--dry-run", help="Read Notion but perform no writes."),
     state: Path = typer.Option(Path(".kindle-notes-state.json"), "--state"),
-    token: str | None = typer.Option(None, "--token", help="Defaults to NOTION_TOKEN.", hidden=True),
+    token: str | None = typer.Option(
+        None, "--token", help="Defaults to NOTION_TOKEN.", hidden=True
+    ),
     data_source_id: str | None = typer.Option(
         None, "--data-source-id", help="Defaults to NOTION_DATA_SOURCE_ID."
     ),
@@ -111,7 +119,9 @@ def notion_command(
 
 @app.command("run")
 def run_command(
-    input_path: Path = typer.Argument(..., exists=True, dir_okay=False, readable=True, metavar="INPUT"),
+    input_path: Path = typer.Argument(
+        ..., exists=True, dir_okay=False, readable=True, metavar="INPUT"
+    ),
     output: Path = typer.Option(Path("dist/kindle-notes.pdf"), "--output", "-o"),
     split: bool = typer.Option(False, "--split"),
     sync_notion: bool = typer.Option(False, "--notion", help="Also sync to Notion."),

@@ -2,7 +2,6 @@ from pathlib import Path
 
 from kindle_notes_pdf_notion.parsers import parse_content, parse_path
 
-
 ENGLISH = """Example Book (Ada Reader)
 - Your Highlight on page 12 | Location 100-102 | Added on Monday, January 1, 2024 10:00 AM
 A useful synthetic highlight.
